@@ -24,7 +24,6 @@ public class TestController {
 	public String getUser(HttpServletRequest request, ModelMap model, @PathVariable Integer id){
 		User user=userMng.getById(id);
 		model.put("user", user);
-		System.out.println("hehe");
 		return "index";
 	}
 	
