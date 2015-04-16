@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="houseKeeper"
+  id="myeclipse.1428471547811"
+  context-root="/houseKeeper"
+  j2ee-spec="5.0"
+  archive="houseKeeper.war">
+  <attributes>
+    <attribute name="webrootdir" value="/web" />
+  </attributes>
+</project-module>
+

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chy.entity">
+	<class name="User" table="t_user">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write" />
+		<id name="id" type="integer" column="id">
+			<generator class="identity" />
+		</id>
+		<property name="username" column="username" type="string"/>
+		<property name="password" column="password" type="string"/>
+	</class>
+</hibernate-mapping>
