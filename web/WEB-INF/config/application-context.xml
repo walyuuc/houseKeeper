@@ -69,4 +69,6 @@
 	</bean>
 	<context:annotation-config/>
 	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<bean id="applicationContext" class="org.apache.axis2.extensions.spring.receivers.ApplicationContextHolder" />
 </beans>

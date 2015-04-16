@@ -75,6 +75,20 @@
 		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 	
+	
+	<!-- 注册axis2的servlet -->
+    <servlet>
+        <servlet-name>AxisServlet</servlet-name>
+        <servlet-class>
+            org.apache.axis2.transport.http.AxisServlet
+        </servlet-class>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AxisServlet</servlet-name>
+        <url-pattern>/services/*</url-pattern>
+    </servlet-mapping>
+    
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

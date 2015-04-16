@@ -10,7 +10,7 @@ import com.chy.dao.UserDao;
 import com.chy.entity.User;
 import com.chy.manager.UserMng;
 
-@Service
+@Service("userService")
 @Transactional
 public class UserMngImpl implements UserMng {
 
