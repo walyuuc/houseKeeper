@@ -11,10 +11,8 @@ import com.chy.entity.User;
 import com.chy.manager.UserMng;
 
 @Service("userService")
-@Transactional
 public class UserMngImpl implements UserMng {
 
-	@Transactional(readOnly = true)
 	public User getById(Integer id) {
 		User user = dao.getById(id);
 		return user;
@@ -24,6 +22,10 @@ public class UserMngImpl implements UserMng {
 		return dao.getList();
 	}
 	
+	public String test(Integer id){
+		System.out.println(id);
+		return "sdfsdf";
+	}
 	@Autowired
 	private UserDao dao;
 
