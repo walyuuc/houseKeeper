@@ -25,10 +25,30 @@ public class UserDaoImpl implements UserDao{
 		query.setCacheable(true);
 		return query.list();
 	}
+	
+	public Long save(User user){
+		Long res=(Long) getSession().save(user);
+		return res;
+	}
+	
+	public User getByUsername(String username){
+		Query query=getSession().createQuery("from User bean where bean.username=:username");
+		query.setParameter("username", username);
+		return (User) query.uniqueResult();
+	}
+	
+	public User getByUsernameAndPassword(User user){
+		Query query=getSession().createQuery("from User bean where bean.username=:username and bean.password=:password");
+		query.setParameter("username", user.getUsername());
+		query.setParameter("password", user.getPassword());
+		return (User) query.uniqueResult();
+		
+	}
 	public Session getSession(){
 		return sessionFactory.getCurrentSession();
 	}
 	
 	@Autowired
 	private SessionFactory sessionFactory;
+
 }

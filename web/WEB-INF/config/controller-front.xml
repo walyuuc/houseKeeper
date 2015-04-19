@@ -73,5 +73,11 @@
 	 <mvc:default-servlet-handler /> 
 	
 	<!--<mvc:resources mapping="/resources/**" location="/resources/**" cache-period="31556926" />-->
-
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.chy.interceptor.BasePathInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans> 

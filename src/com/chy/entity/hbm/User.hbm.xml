@@ -4,10 +4,18 @@
 	<class name="User" table="t_user">
 		<meta attribute="sync-DAO">false</meta>
 		<cache usage="read-write" />
-		<id name="id" type="integer" column="id">
+		<id name="id" column="user_id" type="long">
 			<generator class="identity" />
 		</id>
 		<property name="username" column="username" type="string"/>
 		<property name="password" column="password" type="string"/>
+		<property name="realname" column="realname" type="string"/>
+		<property name="idCard" column="identity_card" type="string"/>
+		<property name="phone" column="phone" type="string"/>
+		<property name="headImg" column="head_img" type="string"/>
+		<property name="checkState" column="check_state" type="java.lang.Byte"/>
+		<property name="address" column="address" type="string"/>
+		<property name="registerDate" column="register_date" type="timestamp"/>
+		<property name="type" column="type" type="java.lang.Byte"/>
 	</class>
 </hibernate-mapping>

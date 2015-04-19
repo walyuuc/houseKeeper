@@ -27,15 +27,15 @@
 			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
 		</encoder>
 	</appender>
-	<logger name="org.springframework" level="INFO"/>
-	<logger name="org.hibernate" level="INFO"/>
-	<logger name="org.apache" level="INFO"/>
-	<logger name="java.sql" level="INFO"/>
-	<logger name="com.chy" level="INFO" additivity="false">
+	<logger name="org.springframework" />
+	<logger name="org.hibernate" />
+	<logger name="org.apache" />
+	<logger name="java.sql" />
+	<logger name="com.chy" level="INFO">
 		<appender-ref ref="FILE" />
 	</logger>
 	<root>
-		<level value="INFO" />
+		<level value="ERROR" />
 		<appender-ref ref="STDOUT"/>
 		<appender-ref ref="ROLLING" />
 	</root>

@@ -9,4 +9,10 @@ public interface UserDao {
 	public User getById(Integer id);
 	
 	public List<User> getList();
+	
+	public Long save(User user);
+	
+	public User getByUsername(String username);
+	
+	public User getByUsernameAndPassword(User user);
 }
