@@ -11,15 +11,15 @@ import com.chy.entity.User;
 public class TestWebService {
 
 	public static void main(String[] args) throws Exception {
-		EndpointReference targetEPR = new EndpointReference("http://localhost:8080/houseKeeper/services/userService?wsdl");
+		EndpointReference targetEPR = new EndpointReference("http://localhost/houseKeeper/services/userService?wsdl");
 		RPCServiceClient serviceClient = new RPCServiceClient();
 		Options options = serviceClient.getOptions();
 		options.setTo(targetEPR);
-		QName opGetCpwsList = new QName("http://impl.manager.chy.com", "getById");
-		Object[] opArgs = new Object[] { 1 };
-		Class[] returnTypes = new Class[] { User.class };
+		QName opGetCpwsList = new QName("http://service.chy.com", "getById");
+		Object[] opArgs = new Object[] { 5 };
+		Class[] returnTypes = new Class[] { String.class };
 		Object[] response = serviceClient.invokeBlocking(opGetCpwsList,opArgs, returnTypes);
-		User user=(User) response[0];
-		System.out.println(user.getPassword());
+		String user=(String) response[0];
+		System.out.println(user);
 	}
 }

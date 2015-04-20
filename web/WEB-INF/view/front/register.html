@@ -1,28 +1,57 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>register.html</title>
-	
-    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-    <meta http-equiv="description" content="this is my page">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    
-    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
-
-  </head>
-  
-  <body>
-    <h1>注册</h1>
-    <form action="${base}/register" method="post">
-    	用户名：<input type="text" name="username" />
-    	密码：<input type="password" name="password" />
-    	<input value="提交" type="submit" />
-    </form>
-    
-    <#if res??>
-    	<script tpye="text/javascript">
-    		alert("${res}");
-    	</script>
-    </#if>
-  </body>
+<head>
+	<title>register.html</title>
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="this is my page">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<script type="text/javascript" src="${frontRes}/js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#username").blur(function(){
+				var username=$("#username").val();
+				$.ajax({
+					type : "get",
+					url : "${base}/register/"+username,
+					data: {}, 
+					dataType:"json",
+					async:false,
+					success : function(info) {
+						var res=info.res
+						$("#checkUsername").html(res);
+						if(res=="此用户名已存在"){
+							$("#registerSub1").attr("disabled",true);
+							$("#registerSub2").attr("disabled",true);
+						}else{
+							$("#registerSub1").attr("disabled",false);
+							$("#registerSub2").attr("disabled",false);
+						}
+					}
+				});
+			});
+			$("#registerSub1").click(function(){
+				$("#userType").val("0");
+				$("#registerForm").submit();			
+			});
+			$("#registerSub2").click(function(){
+				$("#userType").val("1");
+				$("#registerForm").submit();			
+			});
+		});
+	</script>
+</head>
+<body>
+	<h1>注册</h1>
+	<form action="${base}/register" method="post" id="registerForm">
+		用户名：<input type="text" name="username" id="username"/>
+			<div id="checkUsername"></div>
+		密码：<input type="password" name="password" /><br>
+			<input type="hidden" name="type" id="userType"/>
+			<input value="注册成为管家" type="submit" id="registerSub1"/>
+			<input value="注册成为雇主" type="submit" id="registerSub2"/>
+	</form>
+	<#if res??>
+		<div>${res}</div>
+	</#if>
+</body>
 </html>

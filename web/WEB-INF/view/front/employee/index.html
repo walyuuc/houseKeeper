@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>index.html</title>
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="this is my page">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="${frontRes}/css/global.css">
+</head>
+<body>
+	<h1>管家首页</h1>
+	<div>
+		欢迎您：${(user.username)!}
+		<a href="${base}/logout/">退出</a>
+	</div>
+	<ul class="nav">
+		<li><a href="${base}/employee/myinfo">我的资料</a></li>
+		<li><a href="">我的雇主列表</a></li>
+		<li><a href="">任务列表</a></li>
+		<li><a href="">雇主大厅</a></li>
+	</ul>
+</body>
+</html>

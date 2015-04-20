@@ -8,7 +8,7 @@
 	<appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>../logs/houseKeeper/currentlog.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>../logs/test/log-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<fileNamePattern>../logs/houseKeeper/log-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
 			<maxHistory>5</maxHistory>
 			保留最后的5份日志，之前的删除
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">

@@ -21,7 +21,7 @@ import com.chy.utils.ResponseUtils;
 public class TestController {
 
 	@RequestMapping(value="/getUser/{id}")
-	public String getUser(HttpServletRequest request, ModelMap model, @PathVariable Integer id){
+	public String getUser(HttpServletRequest request, ModelMap model, @PathVariable Long id){
 		User user=userMng.getById(id);
 		model.put("user", user);
 		return "index";
@@ -36,7 +36,7 @@ public class TestController {
 	
 	@RequestMapping(value="/userJson")
 	public void getUserJson(HttpServletRequest request, HttpServletResponse response, ModelMap model){
-		User user=userMng.getById(1);
+		User user=userMng.getById(1L);
 		JSONObject json=JSONObject.fromObject(user);
 		ResponseUtils.renderJson(response, json.toString());
 	}

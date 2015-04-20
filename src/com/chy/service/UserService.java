@@ -1,8 +1,11 @@
-package com.chy.manager.impl;
+package com.chy.service;
 
 import java.util.List;
 
+import net.sf.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,12 +15,12 @@ import com.chy.manager.UserMng;
 import com.chy.security.Md5PwdEncoder;
 import com.chy.security.PwdEncoder;
 
-@Service
-public class UserMngImpl implements UserMng {
+@Component("userService")
+public class UserService {
 
-	public User getById(Long id) {
+	public String getById(Long id) {
 		User user = dao.getById(id);
-		return user;
+		return JSONObject.fromObject(user).toString();
 	}
 
 	public List<User> getList() {
@@ -45,7 +48,6 @@ public class UserMngImpl implements UserMng {
 		return hasUser;
 	}
 	
-	@Transactional
 	public User update(User user){
 		return dao.update(user);
 	}

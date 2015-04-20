@@ -6,7 +6,7 @@ import com.chy.entity.User;
 
 public interface UserDao {
 
-	public User getById(Integer id);
+	public User getById(Long id);
 	
 	public List<User> getList();
 	
@@ -15,4 +15,6 @@ public interface UserDao {
 	public User getByUsername(String username);
 	
 	public User getByUsernameAndPassword(User user);
+	
+	public User update(User user);
 }

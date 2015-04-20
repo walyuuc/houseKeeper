@@ -15,7 +15,7 @@ import com.chy.entity.User;
 @Repository
 public class UserDaoImpl implements UserDao{
 
-	public User getById(Integer id) {
+	public User getById(Long id) {
 		User user=(User) getSession().get(User.class, id);
 		return user;
 	}
@@ -44,6 +44,12 @@ public class UserDaoImpl implements UserDao{
 		return (User) query.uniqueResult();
 		
 	}
+	
+	public User update(User user){
+		getSession().update(user);
+		return user;
+	}
+	
 	public Session getSession(){
 		return sessionFactory.getCurrentSession();
 	}

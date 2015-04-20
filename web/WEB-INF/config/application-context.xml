@@ -13,6 +13,8 @@
 	<context:component-scan base-package="com.chy.dao.impl" />
 	<context:component-scan base-package="com.chy.manager.impl" />
 	<context:component-scan base-package="com.chy.directive" />
+	<context:component-scan base-package="com.chy.security" />
+	<context:component-scan base-package="com.chy.service" />
 	
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">

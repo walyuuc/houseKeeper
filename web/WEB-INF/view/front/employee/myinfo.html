@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>myinfo.html</title>
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="this is my page">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="${frontRes}/css/global.css">
+</head>
+<body>
+	<h1>管家-我的信息</h1>
+	<div>
+		欢迎您：${(user.username)!}
+		<a href="${base}/logout/">退出</a>
+	</div>
+	<ul class="nav">
+		<li><a href="${base}/employee/myinfo">我的资料</a></li>
+		<li><a href="${base}/employee/mygod">我的雇主列表</a></li>
+		<li><a href="">任务列表</a></li>
+		<li><a href="">雇主大厅</a></li>
+	</ul>
+	<br>
+	id：${user.id}<br>
+	用户名：${user.username}<br>
+	姓名：${user.realname!}<br>
+	身份证：${user.idCard!}<br>
+	联系电话：${user.phone!}<br>
+	审核状态：<#if user.checkState==0>审核中<#else>已通过</#if><br>
+	地址：${user.address!}<br>
+	注册日期：${user.registerDate?string("yyyy-MM-dd")}<br>
+	<a href="${base}/employee/updinfo/">修改</a>
+</body>
+</html>

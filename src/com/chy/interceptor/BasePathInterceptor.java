@@ -24,8 +24,8 @@ public class BasePathInterceptor extends HandlerInterceptorAdapter{
     	super.postHandle(request, response, handler, modelAndView);
     	if (modelAndView != null) {
     		modelAndView.getModelMap().put("base", request.getContextPath());
-    		modelAndView.getModelMap().put("adminRes", request.getContextPath()+"/resources/admin_res");
-    		modelAndView.getModelMap().put("frontRes", request.getContextPath()+"/resources/front_res");
+    		modelAndView.getModelMap().put("adminRes", request.getContextPath()+"/resources/admin");
+    		modelAndView.getModelMap().put("frontRes", request.getContextPath()+"/resources/front");
     		modelAndView.getModelMap().put("siteName", "houseKeeper");
     	}
     }

@@ -6,7 +6,7 @@ import com.chy.entity.User;
 
 public interface UserMng {
 
-	public User getById(Integer id);
+	public User getById(Long id);
 	
 	public List<User> getList();
 	
@@ -14,5 +14,7 @@ public interface UserMng {
 	
 	public User getByUsername(String username);
 	
-	public boolean login(User user);
+	public User login(User user);
+	
+	public User update(User user);
 }
