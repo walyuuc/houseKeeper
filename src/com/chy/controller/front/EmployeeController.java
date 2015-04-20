@@ -1,5 +1,8 @@
 package com.chy.controller.front;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +11,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.chy.common.Page;
+import com.chy.entity.Relative;
 import com.chy.entity.User;
+import com.chy.manager.RelativeMng;
 import com.chy.manager.UserMng;
 
 @Controller
@@ -41,12 +47,19 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value="employee/mygod",method=RequestMethod.GET)
-	public String mygod(HttpServletRequest request,ModelMap model){
+	public String mygod(Page page,HttpServletRequest request,ModelMap model){
 		Long userId=(Long) request.getSession().getAttribute("userId");
-		
-		return "employee/updinfo";
+		List<Relative> list=relMng.getByEmployee(userId,page);
+		List<User> userList=new ArrayList<User>();
+		for(int i=0;i<list.size();i++){
+			userList.add(userMng.getById(list.get(i).getEmployerId()));
+		}
+		model.put("userList", userList);
+		return "employee/mygod";
 	}
 	
 	@Autowired
 	private UserMng userMng;
+	@Autowired
+	private RelativeMng relMng;
 }

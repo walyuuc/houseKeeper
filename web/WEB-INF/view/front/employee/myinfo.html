@@ -8,17 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="${frontRes}/css/global.css">
 </head>
 <body>
-	<h1>管家-我的信息</h1>
-	<div>
-		欢迎您：${(user.username)!}
-		<a href="${base}/logout/">退出</a>
-	</div>
-	<ul class="nav">
-		<li><a href="${base}/employee/myinfo">我的资料</a></li>
-		<li><a href="${base}/employee/mygod">我的雇主列表</a></li>
-		<li><a href="">任务列表</a></li>
-		<li><a href="">雇主大厅</a></li>
-	</ul>
+	[#include "top.html"/]
 	<br>
 	id：${user.id}<br>
 	用户名：${user.username}<br>

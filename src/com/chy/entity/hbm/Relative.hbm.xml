@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chy.entity">
+	<class name="Relative" table="t_relative">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write" />
+		<id name="id" column="relative_id" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="employeeId" column="employee" type="long"/>
+		<property name="employerId" column="employer" type="long"/>
+		<property name="updateTime" column="update_time" type="timestamp"/>
+	</class>
+</hibernate-mapping>
