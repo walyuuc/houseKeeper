@@ -49,7 +49,9 @@ public class FrontAuthInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 		Long userId=(Long) request.getSession().getAttribute("userId");
 		User user=userMng.getById(userId);
-		modelAndView.getModel().put("user", user);
+		if(modelAndView!=null){
+			modelAndView.getModel().put("user", user);
+		}
 	}
 
 	@Autowired

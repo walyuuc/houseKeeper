@@ -25,7 +25,9 @@ public class LoginController {
 		User sessionUser=(User) request.getSession().getAttribute("user");
 		if(sessionUser==null){
 			sessionUser=userMng.login(user);
-			request.getSession().setAttribute("userId", sessionUser.getId());
+			if(sessionUser!=null){
+				request.getSession().setAttribute("userId", sessionUser.getId());
+			}
 		}
 		if(sessionUser!=null){
 			Byte type=sessionUser.getType();

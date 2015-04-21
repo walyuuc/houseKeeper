@@ -1,6 +1,5 @@
 package com.chy.controller.front;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,9 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.chy.common.Page;
-import com.chy.entity.Relative;
+import com.chy.entity.Task;
 import com.chy.entity.User;
 import com.chy.manager.RelativeMng;
+import com.chy.manager.TaskMng;
 import com.chy.manager.UserMng;
 
 @Controller
@@ -49,17 +49,28 @@ public class EmployeeController {
 	@RequestMapping(value="employee/mygod",method=RequestMethod.GET)
 	public String mygod(Page page,HttpServletRequest request,ModelMap model){
 		Long userId=(Long) request.getSession().getAttribute("userId");
-		List<Relative> list=relMng.getByEmployee(userId,page);
-		List<User> userList=new ArrayList<User>();
-		for(int i=0;i<list.size();i++){
-			userList.add(userMng.getById(list.get(i).getEmployerId()));
-		}
-		model.put("userList", userList);
+		page=relMng.getByEmployee(userId,page);
+		model.put("page", page);
 		return "employee/mygod";
+	}
+	
+	@RequestMapping(value="employee/mytask",method=RequestMethod.GET)
+	public String mytask(Page page,HttpServletRequest request,ModelMap model){
+		Long userId=(Long) request.getSession().getAttribute("userId");
+		page=taskMng.getByEmployee(userId, page);
+		model.put("page", page);
+		return "employee/mytask";
+	}
+	
+	@RequestMapping(value="employee/guzhu_list")
+	public String guzhuList(Page page,HttpServletRequest request,ModelMap model){
+		return "guzhu_list";
 	}
 	
 	@Autowired
 	private UserMng userMng;
 	@Autowired
 	private RelativeMng relMng;
+	@Autowired
+	private TaskMng taskMng;
 }

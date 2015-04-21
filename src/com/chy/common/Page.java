@@ -12,7 +12,7 @@ public class Page<T> {
 
 	private Integer totalCount;
 
-	private List<?> list;
+	private List<T> list;
 
 	public Page() {
 		pageNo = new Integer(1);

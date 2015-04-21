@@ -15,7 +15,7 @@
 	姓名：${user.realname!}<br>
 	身份证：${user.idCard!}<br>
 	联系电话：${user.phone!}<br>
-	审核状态：<#if user.checkState==0>审核中<#else>已通过</#if><br>
+	审核状态：[#if user.checkState==0]审核中[#else]已通过[/#if]<br>
 	地址：${user.address!}<br>
 	注册日期：${user.registerDate?string("yyyy-MM-dd")}<br>
 	<a href="${base}/employee/updinfo/">修改</a>

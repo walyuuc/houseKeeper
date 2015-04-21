@@ -11,8 +11,21 @@
 	[#include "top.html"/]
 	<br>
 	<ul>
-	[#list page.list as user]
-		<li>${user.id} ${user.username}</li>
+	[#list page.list as task]
+		<li>
+			${task.id} 
+			[#if task.type==1]
+				租车
+			[#elseif task.type==2]
+				洗衣
+			[#elseif task.type==3]
+				清洁
+			[/#if]
+			雇主：${task.employer.username}
+			发起日期：${task.releaseDate?string('yyyy-MM-dd')}
+			截止日期：${task.endDate?string('yyyy-MM-dd')}
+			<a href="">查看详情</a>
+		</li>
 	[/#list]
 	</ul>
 	[#include "../page.html"/]

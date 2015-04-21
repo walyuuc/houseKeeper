@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chy.entity">
+	<class name="Task" table="t_task">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write" />
+		<id name="id" column="task_id" type="long">
+			<generator class="identity" />
+		</id>
+		<many-to-one name="employer" column="employer" class="User"></many-to-one>
+		<many-to-one name="employee" column="employee" class="User"></many-to-one>
+		<property name="type" column="type" type="java.lang.Byte"/>
+		<property name="corpus" column="corpus" type="java.lang.Double"/>
+		<property name="reward" column="reward" type="java.lang.Double"/>
+		<property name="releaseDate" column="release_date" type="timestamp"/>
+		<property name="endDate" column="end_date" type="timestamp"/>
+		<property name="params" column="params" type="string"/>
+		<property name="dealState" column="dealstate" type="java.lang.Byte"/>
+		<property name="payState" column="paystate" type="java.lang.Byte"/>
+	</class>
+</hibernate-mapping>

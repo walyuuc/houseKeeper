@@ -1,0 +1,32 @@
+<div class="page">
+	[#assign count=4]
+    <div class="page_nr">
+    <a href="?pageNo=${page.pageNo-1}" class="pre">上一页</a>
+    [#if page.pageNo lt count+2]
+        [#list 1..page.pageNo as i]
+     	    <a href="?pageNo=${i}" [#if page.pageNo==i]class="num_select"[#else]class="num_normal"[/#if]>${i}</a>
+        [/#list]
+    [#else]
+    	<a href="?pageNo=1" class="num_normal">1</a>
+    	<span class="syh">...</span>
+    	[#list count-1..1 as i]
+    	<a href="?pageNo=${page.pageNo-2}" class="num_normal">${page.pageNo-i}</a>
+    	[/#list]
+    	<a href="?pageNo=${page.pageNo}" class="num_select">${page.pageNo}</a>
+    [/#if]	
+    [#if (page.pageNo lt page.totalPage-count)&&(page.totalPage gt page.pageNo+count)]
+        [#list 1..count-1 as i]
+        	<a href="?pageNo=${page.pageNo+i}" class="num_normal">${page.pageNo+i}</a>
+        [/#list]
+        <span class="syh">...</span>
+        <a href="?pageNo=${page.totalPage}" class="num_normal">${page.totalPage}</a>
+    [#else]
+    	[#if page.pageNo lt page.totalPage]
+    	[#list page.pageNo+1..page.totalPage as i]
+     	<a href="?pageNo=${i}" [#if page.pageNo=i]class="num_select"[#else]class="num_normal"[/#if]>${i}</a>
+     	[/#list]
+        [/#if]
+    [/#if]
+    <a href="?pageNo=${page.pageNo+1}" class="next">下一页</a>
+    </div>
+</div>
