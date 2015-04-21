@@ -50,6 +50,13 @@ public class UserDaoImpl implements UserDao{
 		return user;
 	}
 	
+	public void delete(Long userId){
+		User user=(User) getSession().get(User.class, userId);
+		if(user!=null){
+			getSession().delete(user);
+		}
+	}
+	
 	public Session getSession(){
 		return sessionFactory.getCurrentSession();
 	}

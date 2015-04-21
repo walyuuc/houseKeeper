@@ -15,11 +15,11 @@ public class TestWebService {
 		RPCServiceClient serviceClient = new RPCServiceClient();
 		Options options = serviceClient.getOptions();
 		options.setTo(targetEPR);
-		QName opGetCpwsList = new QName("http://service.chy.com", "getById");
-		Object[] opArgs = new Object[] { 5 };
+		QName opGetCpwsList = new QName("http://service.chy.com", "delete");
+		Object[] opArgs = new Object[] { 7 };
 		Class[] returnTypes = new Class[] { String.class };
 		Object[] response = serviceClient.invokeBlocking(opGetCpwsList,opArgs, returnTypes);
-		String user=(String) response[0];
-		System.out.println(user);
+		String res=(String) response[0];
+		System.out.println(res);
 	}
 }

@@ -17,4 +17,6 @@ public interface UserDao {
 	public User getByUsernameAndPassword(User user);
 	
 	public User update(User user);
+	
+	public void delete(Long userId);
 }
