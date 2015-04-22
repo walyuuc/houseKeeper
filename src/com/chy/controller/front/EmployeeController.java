@@ -1,7 +1,5 @@
 package com.chy.controller.front;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.chy.common.Page;
-import com.chy.entity.Task;
 import com.chy.entity.User;
 import com.chy.manager.RelativeMng;
 import com.chy.manager.TaskMng;
@@ -64,7 +61,9 @@ public class EmployeeController {
 	
 	@RequestMapping(value="employee/guzhu_list")
 	public String guzhuList(Page page,HttpServletRequest request,ModelMap model){
-		return "guzhu_list";
+		page=userMng.getFreeEmployer(page);
+		model.put("page", page);
+		return "employee/guzhu_list";
 	}
 	
 	@Autowired

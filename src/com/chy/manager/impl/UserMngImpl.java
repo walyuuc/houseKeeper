@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.chy.common.Page;
 import com.chy.dao.UserDao;
 import com.chy.entity.User;
 import com.chy.manager.UserMng;
-import com.chy.security.Md5PwdEncoder;
 import com.chy.security.PwdEncoder;
 
 @Service
@@ -48,6 +48,13 @@ public class UserMngImpl implements UserMng {
 	@Transactional
 	public User update(User user){
 		return dao.update(user);
+	}
+	
+	public Page getFreeEmployer(Page page){
+		page.init(page.getPageSize(), dao.getFreeEmployerCount());
+		List<User> userList=dao.getFreeEmployer(page);
+		page.setList(userList);
+		return page;
 	}
 	
 	@Autowired

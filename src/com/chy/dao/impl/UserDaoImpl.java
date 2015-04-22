@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.chy.common.Page;
 import com.chy.dao.UserDao;
 import com.chy.entity.User;
 
@@ -42,7 +43,6 @@ public class UserDaoImpl implements UserDao{
 		query.setParameter("username", user.getUsername());
 		query.setParameter("password", user.getPassword());
 		return (User) query.uniqueResult();
-		
 	}
 	
 	public User update(User user){
@@ -55,6 +55,24 @@ public class UserDaoImpl implements UserDao{
 		if(user!=null){
 			getSession().delete(user);
 		}
+	}
+	
+	public List<User> getFreeEmployer(Page page){
+		String sql="from User bean " +
+				"where bean.id not in (select rel.employerId from Relative rel) " +
+				"and bean.type=1";
+		Query query=getSession().createQuery(sql);
+		query.setFirstResult(page.getStart());
+		query.setMaxResults(page.getPageSize());
+		return query.list();
+	}
+	
+	public int getFreeEmployerCount(){
+		String sql="select count(*) from User bean " +
+				"where bean.id not in (select rel.employerId from Relative rel) " +
+				"and bean.type=1";
+		Query query=getSession().createQuery(sql);
+		return ((Number) (query.iterate().next())).intValue();
 	}
 	
 	public Session getSession(){

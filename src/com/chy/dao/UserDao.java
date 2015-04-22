@@ -2,6 +2,7 @@ package com.chy.dao;
 
 import java.util.List;
 
+import com.chy.common.Page;
 import com.chy.entity.User;
 
 public interface UserDao {
@@ -19,4 +20,8 @@ public interface UserDao {
 	public User update(User user);
 	
 	public void delete(Long userId);
+	
+	public List<User> getFreeEmployer(Page page);
+	
+	public int getFreeEmployerCount();
 }

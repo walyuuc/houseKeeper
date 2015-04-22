@@ -12,7 +12,11 @@
 	<br>
 	<ul>
 	[#list page.list as user]
-		<li>${user.id} ${user.username}</li>
+		<li>
+		${user.id} 
+		${user.username}
+		<a href="">详细资料</a>
+		</li>
 	[/#list]
 	</ul>
 	[#include "../page.html"/]
