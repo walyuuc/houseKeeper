@@ -4,17 +4,16 @@ package com.chy.dao.impl;
 import java.util.List;
 
 import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.chy.common.Finder;
+import com.chy.common.HibernateSimpleDao;
 import com.chy.common.Page;
 import com.chy.dao.UserDao;
 import com.chy.entity.User;
 
 @Repository
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl extends HibernateSimpleDao implements UserDao{
 
 	public User getById(Long id) {
 		User user=(User) getSession().get(User.class, id);
@@ -57,29 +56,13 @@ public class UserDaoImpl implements UserDao{
 		}
 	}
 	
-	public List<User> getFreeEmployer(Page page){
+	public Page getFreeEmployer(Page page){
 		String sql="from User bean " +
-				"where bean.id not in (select rel.employerId from Relative rel) " +
+				"where bean.id not in (select rel.employer.id from Relative rel) " +
 				"and bean.type=1";
-		Query query=getSession().createQuery(sql);
-		query.setFirstResult(page.getStart());
-		query.setMaxResults(page.getPageSize());
-		return query.list();
+		Finder f=Finder.create(sql);
+		f.setCacheable(true);
+		return find(f, page.getPageNo(), page.getPageSize());
 	}
 	
-	public int getFreeEmployerCount(){
-		String sql="select count(*) from User bean " +
-				"where bean.id not in (select rel.employerId from Relative rel) " +
-				"and bean.type=1";
-		Query query=getSession().createQuery(sql);
-		return ((Number) (query.iterate().next())).intValue();
-	}
-	
-	public Session getSession(){
-		return sessionFactory.getCurrentSession();
-	}
-	
-	@Autowired
-	private SessionFactory sessionFactory;
-
 }

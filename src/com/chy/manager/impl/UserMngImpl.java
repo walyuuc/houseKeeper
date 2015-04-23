@@ -51,9 +51,7 @@ public class UserMngImpl implements UserMng {
 	}
 	
 	public Page getFreeEmployer(Page page){
-		page.init(page.getPageSize(), dao.getFreeEmployerCount());
-		List<User> userList=dao.getFreeEmployer(page);
-		page.setList(userList);
+		page=dao.getFreeEmployer(page);
 		return page;
 	}
 	

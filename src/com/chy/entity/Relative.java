@@ -5,8 +5,8 @@ import java.util.Date;
 public class Relative {
 
 	private Long id;
-	private Long employerId;
-	private Long employeeId;
+	private User employer;
+	private User employee;
 	private Date updateTime;
 
 	public Long getId() {
@@ -17,20 +17,20 @@ public class Relative {
 		this.id = id;
 	}
 
-	public Long getEmployerId() {
-		return employerId;
+	public User getEmployer() {
+		return employer;
 	}
 
-	public void setEmployerId(Long employerId) {
-		this.employerId = employerId;
+	public void setEmployer(User employer) {
+		this.employer = employer;
 	}
 
-	public Long getEmployeeId() {
-		return employeeId;
+	public User getEmployee() {
+		return employee;
 	}
 
-	public void setEmployeeId(Long employeeId) {
-		this.employeeId = employeeId;
+	public void setEmployee(User employee) {
+		this.employee = employee;
 	}
 
 	public Date getUpdateTime() {

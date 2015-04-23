@@ -81,6 +81,7 @@
 		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/employee/**"/>
+			<mvc:mapping path="/employer/**"/>
 			<bean class="com.chy.interceptor.FrontAuthInterceptor" >
 				<property name="excludeUrl">  
                     <list>  

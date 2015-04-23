@@ -7,8 +7,8 @@
 		<id name="id" column="relative_id" type="long">
 			<generator class="identity" />
 		</id>
-		<property name="employeeId" column="employee" type="long"/>
-		<property name="employerId" column="employer" type="long"/>
+		<many-to-one name="employer" column="employer" class="User"></many-to-one>
+		<many-to-one name="employee" column="employee" class="User"></many-to-one>
 		<property name="updateTime" column="update_time" type="timestamp"/>
 	</class>
 </hibernate-mapping>

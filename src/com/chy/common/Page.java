@@ -2,7 +2,7 @@ package com.chy.common;
 
 import java.util.List;
 
-public class Page<T> {
+public class Page {
 
 	private Integer pageNo;
 
@@ -12,7 +12,7 @@ public class Page<T> {
 
 	private Integer totalCount;
 
-	private List<T> list;
+	private List list;
 
 	public Page() {
 		pageNo = new Integer(1);
@@ -22,6 +22,13 @@ public class Page<T> {
 	public Page(Integer pageNum, Integer pageSize) {
 		this.pageNo = pageNum;
 		this.pageSize = pageSize;
+	}
+	
+	public Page(Integer pageNum, Integer pageSize, Integer totalCount) {
+		this.pageNo = pageNum;
+		this.pageSize = pageSize;
+		this.totalCount=totalCount;
+		init(pageSize, totalCount);
 	}
 
 	public Integer getPageNo() {
@@ -52,15 +59,15 @@ public class Page<T> {
 		this.totalPage = totalPage;
 	}
 
-	public List<T> getList() {
-		return (List<T>) list;
+	public List getList() {
+		return list;
 	}
 
-	public void setList(List<T> list) {
+	public void setList(List list) {
 		this.list = list;
 	}
 
-	public Integer getStart() {
+	public Integer getFirstResult() {
 		return pageSize * (pageNo - 1);
 	}
 

@@ -11,8 +11,8 @@
 	[#include "top.html"/]
 	<br>
 	<ul>
-	[#list page.list as user]
-		<li>${user.id} ${user.username}</li>
+	[#list page.list as rel]
+		<li>${rel.employer.id} ${rel.employer.username}</li>
 	[/#list]
 	</ul>
 	[#include "../page.html"/]
