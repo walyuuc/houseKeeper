@@ -16,6 +16,11 @@ public class RelativeMngImpl implements RelativeMng {
 		return page;
 	}
 	
+	public Page getByEmployer(Long employerId,Page page){
+		page=dao.getByEmployee(employerId, null, page);
+		return page;
+	}
+	
 	@Autowired
 	private RelativeDao dao;
 	@Autowired

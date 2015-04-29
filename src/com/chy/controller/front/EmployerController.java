@@ -5,9 +5,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.chy.common.Page;
 import com.chy.entity.User;
 import com.chy.manager.RelativeMng;
 import com.chy.manager.UserMng;
@@ -42,9 +44,25 @@ public class EmployerController {
 	}
 	
 	@RequestMapping(value="employer/mykeeper",method=RequestMethod.GET)
-	public String mykeeper(HttpServletRequest request,ModelMap model){
-		
+	public String mykeeper(Page page,HttpServletRequest request,ModelMap model){
+		Long userId=(Long) request.getSession().getAttribute("userId");
+		page=relMng.getByEmployer(userId, page);
+		model.put("page", page);
 		return "employer/mykeeper";
+	}
+	
+	@RequestMapping(value="employer/guanjia_list",method=RequestMethod.GET)
+	public String guanjiaList(Page page,HttpServletRequest request,ModelMap model){
+		page=userMng.getEmployee(page);
+		model.put("page", page);
+		return "employer/guanjia_list";
+	}
+	
+	@RequestMapping(value="employer/guanjia/{id}",method=RequestMethod.GET)
+	public String guanjia(@PathVariable Long id,HttpServletRequest request,ModelMap model){
+		User user=userMng.getById(id);
+		model.put("guanjia", user);
+		return "employer/guanjia_detail";
 	}
 	
 	@Autowired

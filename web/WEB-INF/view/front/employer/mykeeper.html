@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>mygod.html</title>
+	<title>mykeeper.html</title>
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="this is my page">
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -9,7 +9,9 @@
 </head>
 <body>
 	[#include "top.html"/]
-	<br>
-	${(keeper.username)!}
+	<br><br>
+	[#list page.list as relative]
+		${(relative.employee.id)!} ${(relative.employee.username)!}
+	[/#list]
 </body>
 </html>

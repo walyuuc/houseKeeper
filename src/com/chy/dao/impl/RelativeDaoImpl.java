@@ -17,7 +17,7 @@ public class RelativeDaoImpl extends HibernateSimpleDao implements RelativeDao {
 			f.setParam("employeeId", employeeId);
 		}
 		if(employerId!=null){
-			f.append(" and and bean.employer.id=:employerId");
+			f.append(" and bean.employer.id=:employerId");
 			f.setParam("employerId", employerId);
 		}
 		return find(f, page.getPageNo(), page.getPageSize());

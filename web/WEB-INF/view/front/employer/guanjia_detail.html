@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>guanjia_detail.html</title>
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="this is my page">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="${frontRes}/css/global.css">
+</head>
+<body>
+	[#include "top.html"/]
+	<br>
+	id：${guanjia.id}<br>
+	用户名：${guanjia.username}<br>
+	姓名：${guanjia.realname!}<br>
+	身份证：${guanjia.idCard!}<br>
+	联系电话：${guanjia.phone!}<br>
+	审核状态：[#if guanjia.checkState==0]审核中[#else]已通过[/#if]<br>
+	地址：${guanjia.address!}<br>
+	注册日期：${guanjia.registerDate?string("yyyy-MM-dd")}<br>
+</body>
+</html>

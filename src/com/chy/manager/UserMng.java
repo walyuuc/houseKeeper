@@ -20,4 +20,6 @@ public interface UserMng {
 	public User update(User user);
 	
 	public Page getFreeEmployer(Page page);
+	
+	public Page getEmployee(Page page);
 }

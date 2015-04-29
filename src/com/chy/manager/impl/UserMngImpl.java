@@ -55,6 +55,10 @@ public class UserMngImpl implements UserMng {
 		return page;
 	}
 	
+	public Page getEmployee(Page page){
+		return dao.getEmployee(page);
+	}
+	
 	@Autowired
 	private UserDao dao;
 	@Autowired

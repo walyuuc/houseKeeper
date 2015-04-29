@@ -65,4 +65,12 @@ public class UserDaoImpl extends HibernateSimpleDao implements UserDao{
 		return find(f, page.getPageNo(), page.getPageSize());
 	}
 	
+	public Page getEmployee(Page page){
+		String sql="from User bean where bean.type=0";
+		Finder f=Finder.create(sql);
+		f.setCacheable(true);
+		return find(f, page.getPageNo(), page.getPageSize());
+	}
+	
+	
 }

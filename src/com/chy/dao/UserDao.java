@@ -22,4 +22,6 @@ public interface UserDao {
 	public void delete(Long userId);
 	
 	public Page getFreeEmployer(Page page);
+	
+	public Page getEmployee(Page page);
 }
