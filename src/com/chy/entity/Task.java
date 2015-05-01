@@ -13,9 +13,21 @@ public class Task {
 	private Date releaseDate;
 	private Date endDate;
 	private String params;
-	private Byte dealState;
-	private Byte payState;
+	private Byte dealState=0;
+	private Byte payState=0;
 
+	public Task(){
+		
+	}
+	
+	public Task(User employer,User employee,Byte type,Date releaseDate,Date endDate,String params){
+		this.employer=employer;
+		this.employee=employee;
+		this.type=type;
+		this.releaseDate=releaseDate;
+		this.endDate=endDate;
+		this.params=params;
+	}
 	public Long getId() {
 		return id;
 	}

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chy.entity">
+	<class name="Param" table="t_param">
+		<meta attribute="sync-DAO">false</meta>
+		<cache usage="read-write" />
+		<id name="id" column="param_id" type="long">
+			<generator class="identity" />
+		</id>
+		<property name="name" column="name" type="string"/>
+		<property name="type" column="type" type="java.lang.Byte"/>
+	</class>
+</hibernate-mapping>

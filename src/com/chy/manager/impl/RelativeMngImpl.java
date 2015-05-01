@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.chy.common.Page;
 import com.chy.dao.RelativeDao;
 import com.chy.dao.UserDao;
+import com.chy.entity.Relative;
+import com.chy.entity.User;
 import com.chy.manager.RelativeMng;
 
 @Service
@@ -16,9 +18,10 @@ public class RelativeMngImpl implements RelativeMng {
 		return page;
 	}
 	
-	public Page getByEmployer(Long employerId,Page page){
+	public User getByEmployer(Long employerId){
+		Page page=new Page();
 		page=dao.getByEmployee(employerId, null, page);
-		return page;
+		return  ((Relative)page.getList().get(0)).getEmployee();
 	}
 	
 	@Autowired

@@ -11,10 +11,10 @@
 	[#include "top.html"/]
 	<br>
 	<ul>
-	[#list page.list as user]
+	[#list page.list as guanjia]
 		<li>
-		${user.id} 
-		${user.username}
+		${guanjia.id} 
+		${guanjia.username}
 		<a href="${base}/employer/guanjia/${user.id}/">详细资料</a>
 		</li>
 	[/#list]
